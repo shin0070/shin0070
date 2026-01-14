@@ -1,0 +1,329 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Outfit:wght@400;700&display=swap');
+
+:root {
+    --primary: #FF9F1C;
+    /* Bright Orange */
+    --secondary: #2EC4B6;
+    /* Teal */
+    --accent: #FFBF69;
+    /* Soft Orange */
+    --bg: #E0F7FA;
+    /* Light Cyan */
+    --white: #FFFFFF;
+    --text: #2D3436;
+    --glass: rgba(255, 255, 255, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', 'Jua', sans-serif;
+    background-color: var(--bg);
+    background-image: radial-gradient(circle at 10% 20%, rgba(255, 159, 28, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(46, 196, 182, 0.1) 0%, transparent 20%);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* Header */
+header {
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+    font-family: 'Jua', sans-serif;
+    font-size: 1.8rem;
+    color: var(--secondary);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo span {
+    color: var(--primary);
+}
+
+/* Main Container */
+main {
+    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.hero h1 {
+    font-family: 'Jua', sans-serif;
+    font-size: 3.5rem;
+    color: var(--text);
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 0px var(--white);
+    animation: bounceIn 1s ease;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-img-container {
+    width: 100%;
+    max-height: 400px;
+    overflow: hidden;
+    border-radius: 30px;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.hero-img-container:hover {
+    transform: translateY(-5px);
+}
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Menu Grid */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    padding: 1rem;
+}
+
+.menu-card {
+    background: var(--glass);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 2rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.menu-card:hover::before {
+    opacity: 1;
+}
+
+.menu-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    background: white;
+}
+
+.icon-box {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.menu-title {
+    font-family: 'Jua', sans-serif;
+    font-size: 1.5rem;
+    color: var(--secondary);
+}
+
+.menu-desc {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.bg-shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(50px);
+    z-index: -1;
+}
+
+.shape-1 {
+    width: 300px;
+    height: 300px;
+    background: var(--accent);
+    top: -50px;
+    left: -100px;
+    opacity: 0.3;
+}
+
+.shape-2 {
+    width: 400px;
+    height: 400px;
+    background: var(--secondary);
+    bottom: -100px;
+    right: -100px;
+    opacity: 0.2;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: var(--glass);
+    margin-top: auto;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    60% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Page specific content styles */
+.content-box {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 3rem;
+    width: 100%;
+    box-shadow: var(--shadow);
+    min-height: 400px;
+}
+
+.back-btn {
+    display: inline-block;
+    margin-bottom: 2rem;
+    padding: 0.8rem 1.5rem;
+    background: var(--white);
+    color: var(--secondary);
+    text-decoration: none;
+    border-radius: 50px;
+    font-family: 'Jua', sans-serif;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.back-btn:hover {
+    transform: translateX(-5px);
+}
+
+/* New Additions for "More Content" */
+.game-card {
+    display: block;
+    background: #FFFAF0;
+    padding: 1.5rem;
+    border-radius: 20px;
+    text-decoration: none;
+    color: var(--text);
+    width: 200px;
+    border: 2px solid #FFECB3;
+    transition: transform 0.2s;
+}
+
+.game-card:hover {
+    transform: scale(1.05) rotate(-2deg);
+    background: #FFF;
+    border-color: var(--primary);
+}
+
+.game-card h3 {
+    font-family: 'Jua';
+    margin: 0.5rem 0;
+    color: #E67E22;
+}
+
+.new-books-scroll {
+    display: flex;
+    overflow-x: auto;
+    gap: 1.5rem;
+    padding: 1rem;
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.new-books-scroll::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari */
+}
+
+.mini-book {
+    min-width: 120px;
+    height: 160px;
+    background: white;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    font-family: 'Jua';
+    font-size: 1rem;
+    color: #555;
+    transition: transform 0.2s;
+}
+
+.mini-book:hover {
+    transform: translateY(-5px);
+}
