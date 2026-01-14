@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공지사항 - 신록의 도서관놀이터</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .notice-list {
+            list-style: none;
+        }
+
+        .notice-item {
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+        }
+
+        .notice-item:hover {
+            background: #f9f9f9;
+        }
+
+        .notice-title {
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .notice-date {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 0.8rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo"><span>📚</span> 신록의 도서관놀이터</a>
+    </header>
+
+    <main>
+        <div style="text-align: left; width: 100%; max-width: 800px;">
+            <a href="index.html" class="back-btn">← 홈으로 가기</a>
+        </div>
+
+        <div class="content-box" style="max-width: 800px;">
+            <h2
+                style="font-family: 'Jua'; font-size: 2.5rem; margin-bottom: 2rem; color: var(--accent); text-align: center;">
+                공지사항</h2>
+
+            <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 300px;">
+                    <ul class="notice-list">
+                        <li class="notice-item">
+                            <div>
+                                <span class="badge">필독</span>
+                                <span class="notice-title">3월 신착 도서 안내</span>
+                            </div>
+                            <span class="notice-date">3.15</span>
+                        </li>
+                        <li class="notice-item">
+                            <div>
+                                <span class="badge" style="background:var(--secondary);">행사</span>
+                                <span class="notice-title">독서 골든벨 참가자 모집</span>
+                            </div>
+                            <span class="notice-date">3.10</span>
+                        </li>
+                        <li class="notice-item">
+                            <div>
+                                <span class="badge" style="background:#ddd; color:#555;">안내</span>
+                                <span class="notice-title">도서관 이용 예절 지키기</span>
+                            </div>
+                            <span class="notice-date">3.01</span>
+                        </li>
+                        <li class="notice-item">
+                            <div>
+                                <span class="badge" style="background:#ddd; color:#555;">방학</span>
+                                <span class="notice-title">겨울방학 운영 시간 변경</span>
+                            </div>
+                            <span class="notice-date">2.28</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Calendar Widget (Visual) -->
+                <div
+                    style="flex: 1; min-width: 300px; background: white; border: 1px solid #eee; border-radius: 15px; padding: 1.5rem;">
+                    <h3 style="text-align: center; margin-bottom: 1rem; color: #555;">📅 2026년 3월 일정</h3>
+                    <table style="width: 100%; border-collapse: collapse; text-align: center;">
+                        <thead>
+                            <tr style="color: #888; border-bottom: 1px solid #eee;">
+                                <th style="padding: 0.5rem; color: #ff6b6b">일</th>
+                                <th style="padding: 0.5rem;">월</th>
+                                <th style="padding: 0.5rem;">화</th>
+                                <th style="padding: 0.5rem;">수</th>
+                                <th style="padding: 0.5rem;">목</th>
+                                <th style="padding: 0.5rem;">금</th>
+                                <th style="padding: 0.5rem; color: #4ecdc4">토</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 0.8rem; color:#ff6b6b">1</td>
+                                <td style="padding: 0.8rem;">2</td>
+                                <td style="padding: 0.8rem;">3</td>
+                                <td style="padding: 0.8rem;">4</td>
+                                <td style="padding: 0.8rem;">5</td>
+                                <td style="padding: 0.8rem;">6</td>
+                                <td style="padding: 0.8rem; color: #4ecdc4">7</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.8rem; color:#ff6b6b">8</td>
+                                <td style="padding: 0.8rem;">9</td>
+                                <td style="padding: 0.8rem; background: #FFF3E0; border-radius: 50%;">10</td>
+                                <td style="padding: 0.8rem;">11</td>
+                                <td style="padding: 0.8rem;">12</td>
+                                <td style="padding: 0.8rem;">13</td>
+                                <td style="padding: 0.8rem; color: #4ecdc4">14</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.8rem; color:#ff6b6b">15</td>
+                                <td style="padding: 0.8rem;">16</td>
+                                <td style="padding: 0.8rem;">17</td>
+                                <td style="padding: 0.8rem;">18</td>
+                                <td style="padding: 0.8rem;">19</td>
+                                <td style="padding: 0.8rem;">20</td>
+                                <td style="padding: 0.8rem; color: #4ecdc4">21</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 신록의 도서관놀이터</p>
+    </footer>
+</body>
+
+</html>

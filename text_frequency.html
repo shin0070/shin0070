@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글자 수사대 - 신록의 도서관놀이터</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .tool-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        textarea {
+            width: 100%;
+            height: 200px;
+            padding: 20px;
+            border: 2px solid #E0F7FA;
+            border-radius: 15px;
+            font-size: 16px;
+            font-family: 'Outfit', 'Noto Sans KR', sans-serif;
+            resize: vertical;
+            box-sizing: border-box;
+            background: #FAFAFA;
+            transition: all 0.3s;
+        }
+
+        textarea:focus {
+            border-color: var(--secondary);
+            outline: none;
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(46, 196, 182, 0.1);
+        }
+
+        .analyze-btn {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+            font-family: 'Jua', sans-serif;
+            margin-top: 20px;
+        }
+
+        .analyze-btn:hover {
+            transform: translateY(-3px);
+            background-color: #25a99d;
+        }
+
+        .result-area {
+            margin-top: 30px;
+            display: none;
+            background: #E0F2F1;
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            text-align: center;
+        }
+
+        th {
+            background-color: var(--secondary);
+            color: white;
+            font-family: 'Jua';
+        }
+
+        .count-badge {
+            background-color: #e8f0fe;
+            color: var(--primary);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+
+    <header>
+        <a href="index.html" class="logo"><span>📚</span> 신록의 도서관놀이터</a>
+    </header>
+
+    <main>
+        <div style="text-align: left; width: 100%; max-width: 800px;">
+            <a href="index.html" class="back-btn">← 홈으로 가기</a>
+        </div>
+
+        <div class="tool-container">
+            <h1
+                style="font-family: 'Jua'; text-align: center; color: var(--text); margin-bottom: 1rem; font-size: 2.5rem;">
+                🕵️‍♂️ 글자 수사대</h1>
+            <p style="text-align: center; color: #666; margin-bottom: 2rem;">
+                독후감이나 일기를 여기에 넣어봐!<br>
+                어떤 단어를 가장 많이 썼는지 탐정이 되어 찾아줄게.
+            </p>
+
+            <textarea id="textInput" placeholder="여기에 글을 쓰거나 붙여넣어 보세요..."></textarea>
+
+            <button class="analyze-btn" onclick="analyzeText()">🔍 범인(단어) 찾기!</button>
+
+            <div id="resultArea" class="result-area">
+                <h3 style="font-family: 'Jua'; color: var(--secondary); text-align: center;">📊 수사 결과 (Top 10)</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>순위</th>
+                            <th>단어</th>
+                            <th>몇 번 나왔을까?</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 신록의 도서관놀이터</p>
+    </footer>
+
+    <script>
+        function analyzeText() {
+            const text = document.getElementById('textInput').value;
+            const resultArea = document.getElementById('resultArea');
+            const resultBody = document.getElementById('resultBody');
+
+            if (!text.trim()) {
+                alert("글을 입력해야 수사를 시작할 수 있어!");
+                return;
+            }
+
+            // 1. 전처리: 특수문자 제거 및 공백 기준 분리
+            const words = text.replace(/[^\w\sㄱ-힣]/g, " ")
+                .split(/\s+/)
+                .filter(word => word.length > 0);
+
+            if (words.length === 0) {
+                alert("분석할 단어가 없어. 다시 확인해봐!");
+                return;
+            }
+
+            // 2. 빈도수 계산
+            const wordCounts = {};
+            words.forEach(word => {
+                wordCounts[word] = (wordCounts[word] || 0) + 1;
+            });
+
+            // 3. 정렬
+            const sortedWords = Object.entries(wordCounts)
+                .sort((a, b) => b[1] - a[1]);
+
+            // 4. 결과 출력
+            resultBody.innerHTML = "";
+            const top10 = sortedWords.slice(0, 10);
+
+            top10.forEach((item, index) => {
+                let badgeColor = index < 3 ? 'background:#FFECB3;' : '';
+
+                const row = `
+                    <tr style="${index < 3 ? 'font-weight:bold;' : ''}">
+                        <td>${index + 1}등</td>
+                        <td>${item[0]}</td>
+                        <td><span class="count-badge" style="${badgeColor}">${item[1]}번</span></td>
+                    </tr>
+                `;
+                resultBody.innerHTML += row;
+            });
+
+            resultArea.style.display = "block";
+        }
+    </script>
+</body>
+
+</html>

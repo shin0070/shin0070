@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>돼지 삼형제 이야기 게임</title>
+<style>
+  body {
+    font-family: "맑은 고딕", Arial, sans-serif;
+    background: #f6f8fa;
+    padding: 30px;
+    text-align: center;
+  }
+  h1 {
+    margin-bottom: 10px;
+  }
+  #info {
+    display: flex;
+    justify-content: space-between;
+    max-width: 600px;
+    margin: 10px auto;
+    font-size: 16px;
+  }
+  #progress {
+    max-width: 600px;
+    height: 20px;
+    background: #ddd;
+    border-radius: 10px;
+    margin: 15px auto;
+  }
+  #bar {
+    height: 100%;
+    width: 0%;
+    background: #4caf50;
+    border-radius: 10px;
+    transition: width 0.3s;
+  }
+  #story {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 20px auto;
+    min-height: 120px;
+    text-align: left;
+  }
+  .choices {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .choices button {
+    width: 100%;
+    margin: 10px 0;
+    padding: 14px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    background: white;
+  }
+  .choices button:hover {
+    background: #eef;
+  }
+  .correct {
+    background: #c8e6c9 !important;
+  }
+  .wrong {
+    background: #ffcdd2 !important;
+  }
+  #message {
+    margin-top: 15px;
+    font-weight: bold;
+    height: 24px;
+  }
+  #restartBtn {
+    margin-top: 20px;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background: #4caf50;
+    color: white;
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<h1>🐷 돼지 삼형제 이야기 게임</h1>
+<p>알맞은 문장을 골라 이야기를 완성해 보세요.</p>
+
+<div id="info">
+  <div id="score">⭐ 0</div>
+  <div id="stage">단계 1</div>
+</div>
+
+<div id="progress">
+  <div id="bar"></div>
+</div>
+
+<div id="story"></div>
+
+<div class="choices" id="choices"></div>
+
+<p id="message"></p>
+
+<button id="restartBtn" onclick="restartGame()">🔄 다시 하기</button>
+
+<script>
+  const correctStory = [
+    "돼지 삼형제가 살고 있었어요.",
+    "첫째 돼지는 짚으로 집을 지었어요.",
+    "둘째 돼지는 나무로 집을 지었어요.",
+    "셋째 돼지는 벽돌로 집을 지었어요.",
+    "어느 날 늑대가 나타났어요.",
+    "늑대가 집을 불었어요.",
+    "짚집과 나무집이 무너졌어요.",
+    "돼지들은 벽돌집으로 도망갔어요.",
+    "늑대는 벽돌집을 부수지 못했어요."
+  ];
+
+  const praise = [
+    "잘했어요!",
+    "아주 좋아요!",
+    "정답이에요!",
+    "계속 가요!",
+    "멋져요!"
+  ];
+
+  let currentIndex = 0;
+  let score = 0;
+
+  const storyDiv = document.getElementById("story");
+  const choicesDiv = document.getElementById("choices");
+  const messageP = document.getElementById("message");
+  const restartBtn = document.getElementById("restartBtn");
+  const scoreDiv = document.getElementById("score");
+  const stageDiv = document.getElementById("stage");
+  const barDiv = document.getElementById("bar");
+
+  function shuffle(array) {
+    return array.sort(() => Math.random() - 0.5);
+  }
+
+  function updateUI() {
+    stageDiv.textContent = `단계 ${currentIndex + 1}`;
+    barDiv.style.width =
+      (currentIndex / correctStory.length) * 100 + "%";
+  }
+
+  function showChoices() {
+    choicesDiv.innerHTML = "";
+    messageP.textContent = "";
+    updateUI();
+
+    const correctSentence = correctStory[currentIndex];
+    let wrongChoices = correctStory.filter((_, i) => i !== currentIndex);
+    wrongChoices = shuffle(wrongChoices).slice(0, 2);
+
+    const choices = shuffle([correctSentence, ...wrongChoices]);
+
+    choices.forEach(sentence => {
+      const btn = document.createElement("button");
+      btn.textContent = sentence;
+      btn.onclick = () => checkAnswer(sentence, btn);
+      choicesDiv.appendChild(btn);
+    });
+  }
+
+  function checkAnswer(sentence, btn) {
+    if (sentence === correctStory[currentIndex]) {
+      btn.classList.add("correct");
+      storyDiv.innerHTML += sentence + "<br>";
+      score++;
+      scoreDiv.textContent = "⭐ " + score;
+      messageP.textContent =
+        praise[Math.floor(Math.random() * praise.length)];
+      currentIndex++;
+
+      if (currentIndex === correctStory.length) {
+        finishGame();
+      } else {
+        setTimeout(showChoices, 600);
+      }
+    } else {
+      btn.classList.add("wrong");
+      messageP.textContent = "❌ 아직 아니에요. 다시 생각해 보세요.";
+    }
+  }
+
+  function finishGame() {
+    choicesDiv.innerHTML = "";
+    barDiv.style.width = "100%";
+    stageDiv.textContent = "완성!";
+    messageP.textContent =
+      "🎉 이야기를 완성했어요! 별 " + score + "개 획득!";
+    restartBtn.style.display = "inline-block";
+  }
+
+  function restartGame() {
+    currentIndex = 0;
+    score = 0;
+    storyDiv.innerHTML = "";
+    messageP.textContent = "";
+    scoreDiv.textContent = "⭐ 0";
+    restartBtn.style.display = "none";
+    showChoices();
+  }
+
+  showChoices();
+</script>
+
+</body>
+</html>

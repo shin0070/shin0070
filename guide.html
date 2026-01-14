@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이용 안내 - 신록의 도서관놀이터</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .guide-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .guide-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .guide-icon {
+            background: #e3f2fd;
+            color: var(--secondary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo"><span>📚</span> 신록의 도서관놀이터</a>
+    </header>
+
+    <main>
+        <div style="text-align: left; width: 100%; max-width: 800px;">
+            <a href="index.html" class="back-btn">← 홈으로 가기</a>
+        </div>
+
+        <div class="content-box" style="max-width: 800px;">
+            <h2 style="font-family: 'Jua'; font-size: 2.5rem; margin-bottom: 2rem; color: #7986CB; text-align: center;">
+                이용 안내</h2>
+
+            <div class="guide-grid">
+                <div class="guide-item">
+                    <div class="guide-icon">🕒</div>
+                    <div>
+                        <h3>이용 시간</h3>
+                        <p>평일: 09:00 ~ 16:30<br>점심시간: 12:00 ~ 13:00<br>(주말 및 공휴일 휴관)</p>
+                    </div>
+                </div>
+                <!-- ... other items ... -->
+                <div class="guide-item">
+                    <div class="guide-icon">📚</div>
+                    <div>
+                        <h3>대출 규정</h3>
+                        <p>1인당 2권까지<br>대출 기간: 7일<br>(1회 연장 가능)</p>
+                    </div>
+                </div>
+                <div class="guide-item">
+                    <div class="guide-icon">🤫</div>
+                    <div>
+                        <h3>지켜야 할 약속</h3>
+                        <p>떠들지 않아요.<br>뛰어다니지 않아요.<br>음식물을 가져오지 않아요.</p>
+                    </div>
+                </div>
+                <div class="guide-item">
+                    <div class="guide-icon">🤒</div>
+                    <div>
+                        <h3>책이 아파요</h3>
+                        <p>책을 소중히 다뤄주세요.<br>찢어진 책은 사서 선생님께 말씀드려요.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Library Map Section -->
+            <div style="margin-top: 4rem;">
+                <h3 style="text-align: center; margin-bottom: 2rem; font-family: 'Jua'; color: #7986CB;">🗺️ 도서관 지도</h3>
+                <div
+                    style="border: 2px dashed #AAC4FF; border-radius: 20px; padding: 2rem; position: relative; height: 300px; background: #F8F9FA;">
+                    <div
+                        style="position: absolute; top: 20px; left: 20px; width: 100px; height: 260px; background: #C5CAE9; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                        책장 A<br>(문학)</div>
+                    <div
+                        style="position: absolute; top: 20px; left: 140px; width: 100px; height: 260px; background: #C5CAE9; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                        책장 B<br>(과학)</div>
+
+                    <div
+                        style="position: absolute; top: 20px; right: 20px; width: 150px; height: 100px; background: #FFCCBC; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                        사서 선생님<br>계신 곳</div>
+
+                    <div
+                        style="position: absolute; bottom: 20px; right: 20px; width: 200px; height: 120px; background: #FFF9C4; border-radius: 50% 50% 10px 10px; display: flex; align-items: center; justify-content: center;">
+                        이야기 방<br>(쿠션 의자)</div>
+
+                    <div
+                        style="position: absolute; bottom: 20px; left: 260px; right: 240px; height: 80px; background: #E0F2F1; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                        열람석 (책 읽는 곳)</div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 신록의 도서관놀이터</p>
+    </footer>
+</body>
+
+</html>

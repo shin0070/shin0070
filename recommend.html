@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>추천 도서 - 신록의 도서관놀이터</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .book-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .book-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            border: 1px solid #eee;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .book-cover {
+            height: 250px;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .book-info {
+            padding: 1rem;
+        }
+
+        .book-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .book-author {
+            font-size: 0.9rem;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo"><span>📚</span> 신록의 도서관놀이터</a>
+    </header>
+
+    <main>
+        <div style="text-align: left; width: 100%; max-width: 1000px;">
+            <a href="index.html" class="back-btn">← 홈으로 가기</a>
+        </div>
+
+        <div class="content-box" style="max-width: 1000px;">
+            <h2
+                style="font-family: 'Jua'; font-size: 2.5rem; margin-bottom: 2rem; color: var(--secondary); text-align: center;">
+                이달의 추천 도서</h2>
+
+            <!-- Filters (Visual Only) -->
+            <div style="display: flex; gap: 1rem; margin-bottom: 2rem; justify-content: center;">
+                <button
+                    style="padding: 0.5rem 1.2rem; border-radius: 20px; border: none; background: var(--primary); color: white; font-family: 'Jua'; cursor: pointer;">전체</button>
+                <button
+                    style="padding: 0.5rem 1.2rem; border-radius: 20px; border: 1px solid #ddd; background: white; color: #555; font-family: 'Jua'; cursor: pointer;">1~2학년</button>
+                <button
+                    style="padding: 0.5rem 1.2rem; border-radius: 20px; border: 1px solid #ddd; background: white; color: #555; font-family: 'Jua'; cursor: pointer;">3~4학년</button>
+                <button
+                    style="padding: 0.5rem 1.2rem; border-radius: 20px; border: 1px solid #ddd; background: white; color: #555; font-family: 'Jua'; cursor: pointer;">5~6학년</button>
+            </div>
+
+            <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+                <!-- Main Book Grid -->
+                <div class="book-list" style="flex: 2;">
+                    <!-- Existing Cards -->
+                    <div class="book-card">
+                        <div class="book-cover" style="background: #FFF3E0;">🦁</div>
+                        <div class="book-info">
+                            <div class="book-title">용기 있는 사자</div>
+                            <div class="book-author">김작가 | 그림책</div>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <div class="book-cover" style="background: #E3F2FD;">🚀</div>
+                        <div class="book-info">
+                            <div class="book-title">우주 꼬마 탐험대</div>
+                            <div class="book-author">이우주 | 과학</div>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <div class="book-cover" style="background: #F3E5F5;">🏰</div>
+                        <div class="book-info">
+                            <div class="book-title">마법의 성</div>
+                            <div class="book-author">박마법 | 판타지</div>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <div class="book-cover" style="background: #E8F5E9;">🎻</div>
+                        <div class="book-info">
+                            <div class="book-title">노래하는 숲</div>
+                            <div class="book-author">최음악 | 예술</div>
+                        </div>
+                    </div>
+                    <!-- New Cards -->
+                    <div class="book-card">
+                        <div class="book-cover" style="background: #FFEBEE;">🦕</div>
+                        <div class="book-info">
+                            <div class="book-title">공룡이 살아있다</div>
+                            <div class="book-author">강공룡 | 역사</div>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <div class="book-cover" style="background: #FFFDE7;">⭐</div>
+                        <div class="book-info">
+                            <div class="book-title">별을 따는 아이</div>
+                            <div class="book-author">윤별이 | 동화</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar: Best Sellers -->
+                <aside
+                    style="flex: 1; min-width: 250px; background: #FAFAFA; padding: 1.5rem; border-radius: 15px; height: fit-content;">
+                    <h3 style="font-family: 'Jua'; color: var(--text); margin-bottom: 1rem;">🏆 인기도서 TOP 5</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.8rem;">
+                            <span style="font-weight: bold; color: var(--primary); font-size: 1.2rem;">1</span>
+                            <span>흔한남매 15</span>
+                        </li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.8rem;">
+                            <span style="font-weight: bold; color: var(--primary); font-size: 1.2rem;">2</span>
+                            <span>이상한 과자가게 전천당</span>
+                        </li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.8rem;">
+                            <span style="font-weight: bold; color: #888;">3</span>
+                            <span>그리스 로마 신화</span>
+                        </li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.8rem;">
+                            <span style="font-weight: bold; color: #888;">4</span>
+                            <span>Go Go 카카오프렌즈</span>
+                        </li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.8rem;">
+                            <span style="font-weight: bold; color: #888;">5</span>
+                            <span>설민석의 한국사</span>
+                        </li>
+                    </ul>
+                </aside>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 신록의 도서관놀이터</p>
+    </footer>
+</body>
+
+</html>

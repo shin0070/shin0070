@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자료 검색 - 신록의 도서관놀이터</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .search-box {
+            display: flex;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        input {
+            flex: 1;
+            padding: 1rem;
+            border-radius: 50px;
+            border: 2px solid #ddd;
+            font-size: 1.1rem;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        button {
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Jua', sans-serif;
+            font-size: 1.1rem;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+
+    <header>
+        <a href="index.html" class="logo">
+            <span>📚</span> 신록의 도서관놀이터
+        </a>
+    </header>
+
+    <main>
+        <div style="text-align: left; width: 100%; max-width: 800px;">
+            <a href="index.html" class="back-btn">← 홈으로 가기</a>
+        </div>
+
+        <div class="content-box">
+            <h2
+                style="font-family: 'Jua'; font-size: 2.5rem; margin-bottom: 2rem; color: var(--primary); text-align: center;">
+                자료 검색</h2>
+            <div class="search-box">
+                <input type="text" placeholder="책 제목이나 지은이를 입력해봐!">
+                <button>검색하기</button>
+            </div>
+
+            <div style="margin-top: 3rem; text-align: center; color: #888;">
+                <p>🔍 읽고 싶은 책을 찾아보세요.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 신록의 도서관놀이터</p>
+    </footer>
+</body>
+
+</html>
